@@ -1,0 +1,104 @@
+/* Scene 9 — Realization */
+
+.scene-bg--realization {
+  background: radial-gradient(ellipse at center, #fff9e8 0%, #fdebd0 40%, #f8e8f4 100%);
+}
+
+.scene--bright-transition .scene-bg--realization {
+  background: radial-gradient(ellipse at center, #ffffff 0%, #fffdf8 40%, #fef8fb 100%);
+  filter: brightness(1.2);
+  transition: all 1.2s ease;
+}
+
+/* Burst rays */
+.realization-burst {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  animation: burst-appear 0.4s ease forwards;
+}
+
+@keyframes burst-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.burst-ray {
+  position: absolute;
+  width: 3px;
+  height: 45vh;
+  background: linear-gradient(to bottom, rgba(247,214,122,0.7), transparent);
+  transform-origin: center bottom;
+  transform: rotate(var(--ray-angle)) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  margin-left: -1.5px;
+  animation: ray-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ray-pulse {
+  0%, 100% { opacity: 0.5; height: 42vh; }
+  50% { opacity: 0.9; height: 48vh; }
+}
+
+/* Found text */
+.found-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 7vw, 4.5rem);
+  font-weight: 700;
+  color: #2d2438;
+  text-align: center;
+  letter-spacing: 0.04em;
+  position: relative;
+  z-index: 10;
+  animation: found-explode 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  text-shadow: 0 4px 24px rgba(247,180,80,0.4);
+}
+
+@keyframes found-explode {
+  0% { opacity: 0; transform: scale(0.3); }
+  70% { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* YES button */
+.scene-btn--yes {
+  background: linear-gradient(135deg, #c4b5e8 0%, #f4a8c4 100%);
+  color: white;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  padding: 18px 52px;
+  border-radius: var(--radius-xl);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 32px rgba(196,181,232,0.5);
+  animation: yes-btn-appear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scene-btn--yes:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 16px 48px rgba(196,181,232,0.7);
+}
+
+@keyframes yes-btn-appear {
+  from { opacity: 0; transform: scale(0.6) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.realization-char--jump {
+  animation: char-jump-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes char-jump-in {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-25px) scale(1.05, 0.95); }
+  100% { transform: translateY(0) scale(1); }
+}

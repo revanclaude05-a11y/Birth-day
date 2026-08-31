@@ -1,0 +1,21 @@
+.sparkles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.sparkle-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff8d0 0%, #f7d67a 50%, transparent 100%);
+  animation: sparkle-pulse ease-in-out infinite;
+}
+
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  30% { opacity: 0.9; transform: scale(1.1) rotate(90deg); }
+  60% { opacity: 0.6; transform: scale(0.8) rotate(180deg); }
+  80% { opacity: 0.2; transform: scale(1.2) rotate(270deg); }
+}

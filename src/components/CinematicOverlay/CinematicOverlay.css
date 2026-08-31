@@ -1,0 +1,78 @@
+/* ============================================================
+   CINEMATIC OVERLAY CSS
+   ============================================================ */
+
+.cinematic-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+/* Black bars */
+.cinematic-bar {
+  position: absolute;
+  left: 0; right: 0;
+  background: #0a0612;
+  transition: height 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.cinematic-bar--top {
+  top: 0;
+  height: 0;
+}
+
+.cinematic-bar--bottom {
+  bottom: 0;
+  height: 0;
+}
+
+.cinematic-overlay--darkening .cinematic-bar--top,
+.cinematic-overlay--darkening .cinematic-bar--bottom,
+.cinematic-overlay--zoomed .cinematic-bar--top,
+.cinematic-overlay--zoomed .cinematic-bar--bottom,
+.cinematic-overlay--text .cinematic-bar--top,
+.cinematic-overlay--text .cinematic-bar--bottom {
+  height: 15vh;
+}
+
+/* Vignette */
+.cinematic-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center,
+    transparent 35%,
+    rgba(8, 4, 16, 0.5) 65%,
+    rgba(8, 4, 16, 0.92) 100%
+  );
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.cinematic-overlay--darkening .cinematic-vignette { opacity: 0.6; }
+.cinematic-overlay--zoomed .cinematic-vignette { opacity: 1; }
+.cinematic-overlay--text .cinematic-vignette { opacity: 1; }
+.cinematic-overlay--zooming-out .cinematic-vignette { opacity: 0.3; }
+
+/* Cinematic text */
+.cinematic-text {
+  position: absolute;
+  bottom: 22vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.08em;
+  text-align: center;
+  white-space: nowrap;
+  animation: cinematic-text-appear 1s ease forwards;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+
+@keyframes cinematic-text-appear {
+  from { opacity: 0; letter-spacing: 0.2em; }
+  to { opacity: 1; letter-spacing: 0.08em; }
+}

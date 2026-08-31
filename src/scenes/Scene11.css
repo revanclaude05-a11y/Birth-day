@@ -1,0 +1,32 @@
+/* Scene 11 — The Bag */
+
+.scene-bg--bag {
+  background: linear-gradient(160deg, #faf8f4 0%, #f2eefc 60%, #edf6ff 100%);
+}
+
+.bag-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  animation: float-up 0.8s ease both;
+}
+
+.bag-emoji {
+  font-size: clamp(3rem, 10vw, 5rem);
+  animation: bag-sway 2.5s ease-in-out infinite;
+}
+
+@keyframes bag-sway {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(4deg) translateY(-6px); }
+}
+
+.bag-hint {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
